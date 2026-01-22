@@ -21,17 +21,16 @@ body{
   justify-content:center;
   text-align:center;
   overflow:hidden;
-  color:#444;
+  color:#333;
 }
 
-/* Soft overlay for readability */
+/* Light overlay (reduced opacity) */
 body::after{
   content:"";
   position:fixed;
   inset:0;
-  background:rgba(255,255,255,0.65);
+  background:rgba(255,255,255,0.35); /* MUCH lighter */
   pointer-events:none;
-  z-index:-1;
 }
 
 /* Falling flowers */
@@ -52,29 +51,28 @@ body::after{
 /* Sponsor text */
 .sponsor{
   font-size:18px;
-  color:#555;
+  color:#444;
+  z-index:1;
 }
 
 .sponsor span{
   display:block;
-  font-size:26px;   /* Little increased size */
+  font-size:28px;   /* Increased Little Guys size */
   font-weight:bold;
-  color:#222;
-  margin-top:5px;
+  color:#111;
+  margin-top:6px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- Sponsor Content ONLY -->
 <div class="sponsor">
   Sponsored by
   <span>Little Guys</span>
 </div>
 
 <script>
-// Falling flowers (kept as requested)
 const flowers=["🌸","🌺","🌼","💐"];
 for(let i=0;i<30;i++){
   const f=document.createElement("div");
