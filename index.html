@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Marriage Life</title>
+<title>Sponsored by Little Guys</title>
 
 <style>
 body{
   margin:0;
   min-height:100vh;
-  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
-  font-family:Segoe UI,Tahoma,sans-serif;
+
+  /* Background Image */
+  background-image: url("wedding.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  font-family: Segoe UI, Tahoma, sans-serif;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -18,32 +24,17 @@ body{
   color:#444;
 }
 
-h1{
-  font-size:42px;
-  color:#e63946;
-  margin-bottom:10px;
+/* Soft overlay for readability */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(255,255,255,0.65);
+  pointer-events:none;
+  z-index:-1;
 }
 
-.names{
-  font-size:28px;
-  font-weight:bold;
-  background:linear-gradient(45deg,#d4af37,#ffd700,#b8860b);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  margin-bottom:10px;
-}
-
-.date{
-  font-size:18px;
-  color:#555;
-  margin-bottom:20px;
-}
-
-p{
-  font-size:20px;
-  margin:8px 0;
-}
-
+/* Falling flowers */
 .flower{
   position:absolute;
   top:-40px;
@@ -58,53 +49,32 @@ p{
   }
 }
 
-#overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(255,255,255,0.9);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:22px;
-  color:#e63946;
+/* Sponsor text */
+.sponsor{
+  font-size:18px;
+  color:#555;
+}
+
+.sponsor span{
+  display:block;
+  font-size:26px;   /* Little increased size */
   font-weight:bold;
-  cursor:pointer;
-  z-index:9999;
+  color:#222;
+  margin-top:5px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- Background Music -->
-<audio id="bgMusic" loop>
-  <source src="Oru-Paathi-Kadhavu.mp3" type="audio/mpeg">
-</audio>
-
-<!-- Content -->
-<div>
-  <h1>Happy Marriage Life</h1>
-
-  <div class="names">
-    N. Hariharan Weds M. Jagadheeswari
-  </div>
-
-  <div class="date">25 / 01 / 2026</div>
-
-  <p>💖 May your love grow stronger every day</p>
-  <p>🌸 May your life together be filled with joy</p>
-  <p>✨ Wishing you a lifetime of happiness</p>
-
-  <p style="margin-top:25px;font-size:14px;color:#777">
-    Sponsored by <strong>Little Guys</strong>
-  </p>
+<!-- Sponsor Content ONLY -->
+<div class="sponsor">
+  Sponsored by
+  <span>Little Guys</span>
 </div>
 
-<!-- Tap to play -->
-<div id="overlay">Tap or Click to Play Music 🎵</div>
-
 <script>
-// Falling flowers
+// Falling flowers (kept as requested)
 const flowers=["🌸","🌺","🌼","💐"];
 for(let i=0;i<30;i++){
   const f=document.createElement("div");
@@ -115,15 +85,6 @@ for(let i=0;i<30;i++){
   f.style.fontSize=18+Math.random()*20+"px";
   document.body.appendChild(f);
 }
-
-// Music control
-const audio=document.getElementById("bgMusic");
-const overlay=document.getElementById("overlay");
-
-overlay.addEventListener("click",()=>{
-  audio.play();
-  overlay.style.display="none";
-});
 </script>
 
 </body>
