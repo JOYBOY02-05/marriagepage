@@ -2,44 +2,61 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sponsored by Little Guys</title>
 
 <style>
+/* ===== BASE ===== */
 body{
   margin:0;
   min-height:100vh;
-
-  /* Background Image */
   background-image: url("wedding.jpeg");
-  background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 
   font-family: Segoe UI, Tahoma, sans-serif;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
   overflow:hidden;
   color:#333;
 }
 
-/* Light overlay (reduced opacity) */
+/* Light overlay */
 body::after{
   content:"";
   position:fixed;
   inset:0;
-  background:rgba(255,255,255,0.35); /* MUCH lighter */
+  background:rgba(255,255,255,0.25);
   pointer-events:none;
 }
 
-/* Falling flowers */
+/* ===== SPONSOR (DESKTOP CENTER) ===== */
+.sponsor{
+  position:fixed;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  text-align:center;
+  font-size:18px;
+  color:#444;
+  z-index:2;
+}
+
+.sponsor span{
+  display:block;
+  font-size:28px;
+  font-weight:bold;
+  color:#111;
+  margin-top:6px;
+}
+
+/* ===== FLOWERS ===== */
 .flower{
   position:absolute;
   top:-40px;
   font-size:24px;
   animation:fall linear infinite;
   pointer-events:none;
+  z-index:1;
 }
 
 @keyframes fall{
@@ -48,31 +65,73 @@ body::after{
   }
 }
 
-/* Sponsor text */
-.sponsor{
-  font-size:18px;
-  color:#444;
-  z-index:1;
+/* ===== TAP TO PLAY ===== */
+#musicOverlay{
+  position:fixed;
+  inset:0;
+  background:rgba(255,255,255,0.85);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  font-weight:bold;
+  color:#e63946;
+  cursor:pointer;
+  z-index:9999;
+  text-align:center;
+  padding:20px;
 }
 
-.sponsor span{
-  display:block;
-  font-size:28px;   /* Increased Little Guys size */
-  font-weight:bold;
-  color:#111;
-  margin-top:6px;
+/* ===== MOBILE FIX (BOTTOM-LEFT + CENTERED TEXT) ===== */
+@media (max-width: 768px){
+
+  body{
+    background-size: contain;
+    background-position: center top;
+    background-color:#fff;
+  }
+
+  body::after{
+    background:rgba(255,255,255,0.15);
+  }
+
+  .sponsor{
+    left:16px;
+    bottom:16px;
+    top:auto;
+    transform:none;
+
+    /* THIS IS THE FIX 👇 */
+    text-align:center;
+  }
+
+  .sponsor span{
+    font-size:20px;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<!-- AUDIO -->
+<audio id="bgMusic" loop>
+  <source src="Oru-Paathi-Kadhavu.mp3" type="audio/mpeg">
+</audio>
+
+<!-- SPONSOR -->
 <div class="sponsor">
   Sponsored by
   <span>Little Guys</span>
 </div>
 
+<!-- TAP AREA -->
+<div id="musicOverlay">
+  Tap anywhere to play music 🎵
+</div>
+
 <script>
+/* Flowers */
 const flowers=["🌸","🌺","🌼","💐"];
 for(let i=0;i<30;i++){
   const f=document.createElement("div");
@@ -83,6 +142,15 @@ for(let i=0;i<30;i++){
   f.style.fontSize=18+Math.random()*20+"px";
   document.body.appendChild(f);
 }
+
+/* Music */
+const audio=document.getElementById("bgMusic");
+const overlay=document.getElementById("musicOverlay");
+
+overlay.addEventListener("click",()=>{
+  audio.play();
+  overlay.style.display="none";
+});
 </script>
 
 </body>
