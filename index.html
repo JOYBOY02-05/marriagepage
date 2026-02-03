@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title></title>
+<title>Happy Wedding</title>
 
 <style>
 /* ===== BASE ===== */
@@ -19,7 +19,7 @@ body{
   color:#333;
 }
 
-/* Light overlay */
+/* Soft white overlay */
 body::after{
   content:"";
   position:fixed;
@@ -44,7 +44,7 @@ body::after{
   }
 }
 
-/* ===== TAP TO PLAY ===== */
+/* ===== TAP TO PLAY MUSIC ===== */
 #musicOverlay{
   position:fixed;
   inset:0;
@@ -78,18 +78,18 @@ body::after{
 
 <body>
 
-<!-- AUDIO -->
+<!-- BACKGROUND MUSIC -->
 <audio id="bgMusic" loop>
   <source src="TUM.mp3" type="audio/mpeg">
 </audio>
 
-<!-- TAP AREA -->
+<!-- TAP SCREEN TO START MUSIC -->
 <div id="musicOverlay">
   Tap anywhere to play music 🎵
 </div>
 
 <script>
-/* Flowers */
+/* Flower Animation */
 const flowers=["🌸","🌺","🌼","💐"];
 for(let i=0;i<30;i++){
   const f=document.createElement("div");
@@ -101,7 +101,7 @@ for(let i=0;i<30;i++){
   document.body.appendChild(f);
 }
 
-/* Music */
+/* Music Play on Tap */
 const audio=document.getElementById("bgMusic");
 const overlay=document.getElementById("musicOverlay");
 
