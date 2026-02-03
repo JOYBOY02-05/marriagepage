@@ -14,7 +14,6 @@ body{
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-
   font-family: Segoe UI, Tahoma, sans-serif;
   overflow:hidden;
   color:#333;
@@ -27,26 +26,6 @@ body::after{
   inset:0;
   background:rgba(255,255,255,0.25);
   pointer-events:none;
-}
-
-/* ===== SPONSOR (DESKTOP CENTER) ===== */
-.sponsor{
-  position:fixed;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  text-align:center;
-  font-size:18px;
-  color:#444;
-  z-index:2;
-}
-
-.sponsor span{
-  display:block;
-  font-size:28px;
-  font-weight:bold;
-  color:#111;
-  margin-top:6px;
 }
 
 /* ===== FLOWERS ===== */
@@ -82,9 +61,8 @@ body::after{
   padding:20px;
 }
 
-/* ===== MOBILE FIX (BOTTOM-LEFT + CENTERED TEXT) ===== */
+/* ===== MOBILE FIX ===== */
 @media (max-width: 768px){
-
   body{
     background-size: contain;
     background-position: center top;
@@ -93,20 +71,6 @@ body::after{
 
   body::after{
     background:rgba(255,255,255,0.15);
-  }
-
-  .sponsor{
-    left:16px;
-    bottom:16px;
-    top:auto;
-    transform:none;
-
-    /* THIS IS THE FIX 👇 */
-    text-align:center;
-  }
-
-  .sponsor span{
-    font-size:20px;
   }
 }
 </style>
@@ -149,5 +113,3 @@ overlay.addEventListener("click",()=>{
 
 </body>
 </html>
-
-
